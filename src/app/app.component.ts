@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'meu-app-dos-sonhos';
+  processador = (title) => {
+    return 'O título é: ' + title;
+  }
 }
