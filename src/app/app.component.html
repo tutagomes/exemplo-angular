@@ -1,5 +1,5 @@
   <br>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col offset-s3 s6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
@@ -11,9 +11,11 @@
         <h3 *ngIf='title.length > 5' > Muito grande !</h3>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row" style='width: 100%'>
     <div class='col s12'>
+        <p [innerHTML]="title"> </p>
+        <!-- <button [disabled]="title.length < 10"> Alterar Titulo </button> -->
       <app-server></app-server>
     </div>
   </div>

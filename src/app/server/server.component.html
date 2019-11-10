@@ -1,3 +1,25 @@
 <div class='container'>
-<p class='green-text'>server works!</p>
+        <div class="input-field inline" style='width: 300px'>
+                <input id="url_inline" type="url" [(ngModel)]='server_url' class="validate">
+                <span class="helper-text" data-error="wrong" data-success="right">URL do Servidor</span>
+              </div>
+              <p>
+                    <label>
+                            <input type="checkbox" class="filled-in" [checked]="mostrar_resposta" (input)='mostrar_resposta = $event.target.checked' />
+                            <span>Mostrar resposta</span>
+                          </label>
+              </p>
+              <br>
+    <div id='resultado' *ngIf='consultaServer.recolhido'>
+            <p class='green-text' *ngIf='consultaServer.serverStatus'>Server online!
+                <br>
+                {{ mostrar_resposta ? 'Resposta: ' + consultaServer.resposta : ''}}
+            </p>
+            <p class='red-text' *ngIf='!consultaServer.serverStatus'>{{consultaServer.error}}</p>
+    </div>
+    <div id='recolhendo' *ngIf='consultaServer.recolhendo'>
+            Verificando servidor...
+    </div>
+    <button class="btn waves-effect waves-light"(click)="verificaServidor()"  name="action">Verificar Servidor
+          </button>
 </div>
