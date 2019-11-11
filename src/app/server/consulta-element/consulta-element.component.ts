@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Consulta } from '../consulta';
 @Component({
-  selector: 'app-consulta-element',
+  selector: '[app-consulta-element]',
   templateUrl: './consulta-element.component.html',
   styleUrls: ['./consulta-element.component.css']
 })

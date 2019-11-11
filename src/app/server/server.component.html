@@ -1,32 +1,31 @@
 <div class='container'>
-        <div class="input-field inline" style='width: 300px'>
-                <input id="url_inline" type="url" [(ngModel)]='server_url' class="validate">
-                <span class="helper-text" data-error="wrong" data-success="right">URL do Servidor</span>
-              </div>
-              <p>
-                    <label>
-                            <input type="checkbox" class="filled-in" [checked]="mostrar_resposta" (input)='mostrar_resposta = $event.target.checked' />
-                            <span>Mostrar resposta</span>
-                          </label>
-              </p>
-              <br>
+    <div class="input-field inline" style='width: 300px'>
+        <input id="url_inline" type="url" [(ngModel)]='server_url' class="validate">
+        <span class="helper-text" data-error="wrong" data-success="right">URL do Servidor</span>
+    </div>
+    <p>
+        <label>
+            <input type="checkbox" class="filled-in" [checked]="mostrar_resposta"
+                (input)='mostrar_resposta = $event.target.checked' />
+            <span>Mostrar resposta</span>
+        </label>
+    </p>
+    <br>
     <div id='resultado' *ngIf='consultaServer.recolhido'>
-            <p class='green-text' *ngIf='consultaServer.serverStatus'>Server online!
-                <br>
-                {{ mostrar_resposta ? 'Resposta: ' + consultaServer.resposta : ''}}
-            </p>
-            <p class='red-text' *ngIf='!consultaServer.serverStatus'>{{consultaServer.error}}</p>
+        <p class='green-text' *ngIf='consultaServer.serverStatus'>Server online!
+            <br>
+            {{ mostrar_resposta ? 'Resposta: ' + consultaServer.resposta : ''}}
+        </p>
+        <p class='red-text' *ngIf='!consultaServer.serverStatus'>{{consultaServer.error}}</p>
     </div>
     <div id='recolhendo' *ngIf='consultaServer.recolhendo'>
-            Verificando servidor...
+        Verificando servidor...
     </div>
-    <button class="btn waves-effect waves-light" (click)="verificaServidor()"  name="action">Verificar Servidor
-          </button>
-          <ul>
-                <li *ngFor="let consulta of historico; let i = index">
-                  {{ i }} - 
-                  {{ consulta.online ? 'Servidor Online' : 'Error!' }} - 
-                  {{ consulta.message }} - <button (click)='historico.splice(i, 1)'>X</button>
-                </li>
-              </ul>
+    <button class="btn waves-effect waves-light" (click)="verificaServidor()" name="action">Verificar Servidor
+    </button>
+    <ul class="collection">
+        <li app-consulta-element class="collection-item" *ngFor="let consulta of historico; let i = index"
+            [consulta]="consulta" [index]="i">
+        </li>
+    </ul>
 </div>
