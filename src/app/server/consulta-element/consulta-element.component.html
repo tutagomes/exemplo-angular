@@ -1,5 +1,5 @@
 <div style='text-align: left;'>
-    <span class="title">{{index}} - {{ consulta.online ? 'Online': 'Offline'}}
+    <span class="title" [ngClass]="{ sucesso: consulta.online, erro: !consulta.online}">{{index}} - {{ consulta.online ? 'Online': 'Offline'}}
         <span class="new badge" [ngClass]="{ red: !consulta.online, green: consulta.online}"
             data-badge-caption="">{{ formataData(consulta.date) }}</span>
         <p style='color: grey; font-size: 0.8em'>
