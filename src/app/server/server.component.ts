@@ -22,7 +22,9 @@ export class ServerComponent implements OnInit {
     resposta: ''
   }
   constructor() { }
-
+  onDeleteConsulta (event) {
+    this.historico.splice(event.index, 1)
+  }
   verificaServidor () {
     this.consultaServer.recolhendo = true
     axios.get(this.server_url).then((response) => {

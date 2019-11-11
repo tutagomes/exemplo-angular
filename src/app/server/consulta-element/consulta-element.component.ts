@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Consulta } from '../consulta';
 @Component({
   selector: '[app-consulta-element]',
@@ -8,10 +8,14 @@ import { Consulta } from '../consulta';
 export class ConsultaElementComponent implements OnInit {
 
   @Input () consulta: Consulta;
-  @Input () index: number;
+  @Input ('indice') index: number;
+  @Output() deleteConsulta = new EventEmitter<{index: number}>();
   constructor() { }
 
   ngOnInit() {
+  }
+  onDeleteConsulta (index) {
+    this.deleteConsulta.emit({index});
   }
  formataData (data) {
    let momento = new Date(data)
