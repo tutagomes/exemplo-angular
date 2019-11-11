@@ -20,6 +20,13 @@
     <div id='recolhendo' *ngIf='consultaServer.recolhendo'>
             Verificando servidor...
     </div>
-    <button class="btn waves-effect waves-light"(click)="verificaServidor()"  name="action">Verificar Servidor
+    <button class="btn waves-effect waves-light" (click)="verificaServidor()"  name="action">Verificar Servidor
           </button>
+          <ul>
+                <li *ngFor="let consulta of historico; let i = index">
+                  {{ i }} - 
+                  {{ consulta.online ? 'Servidor Online' : 'Error!' }} - 
+                  {{ consulta.message }} - <button (click)='historico.splice(i, 1)'>X</button>
+                </li>
+              </ul>
 </div>
