@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Consulta } from './consulta'
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
-  styleUrls: ['./server.component.css']
+  styleUrls: ['./server.component.css'],
+  providers: [LoggingService]
 })
 
 
@@ -21,8 +23,9 @@ export class ServerComponent implements OnInit {
     error: '',
     resposta: ''
   }
-  constructor() { }
+  constructor(private logginService: LoggingService) { }
   onDeleteConsulta (event) {
+    this.logginService.addToLog('Deletado historico de consulta!', false);
     this.historico.splice(event.index, 1)
   }
   verificaServidor () {
