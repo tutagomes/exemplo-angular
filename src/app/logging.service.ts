@@ -4,15 +4,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoggingService {
-
-
-  constructor() { }
-  // Adicionando função de logging
+  private *getId(initial: number) {
+    let i = initial;
+    while (true) {
+      yield i++;
+    }
+  }
+	private idGenerator: Generator = this.getId(0);
+    // Adicionando função de logging
   addToLog(value: string, success: boolean = true) {
     if (success)
-      console.log('Logging: ' + value);
+      console.log(this.idGenerator.next().value + ' - Logging: ' + value);
     else
-      console.error('Error: ' + value);
+      console.error(this.idGenerator.next().value + ' - Error: ' + value);
   }
-
+  constructor() { }
 }
