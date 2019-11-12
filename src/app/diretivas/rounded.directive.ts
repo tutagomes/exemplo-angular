@@ -1,4 +1,4 @@
-import { Directive, OnInit, ElementRef, Renderer2, Input, HostListener } from '@angular/core';
+import { Directive, OnInit, ElementRef, Renderer2, Input, HostListener, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appRounded]'
@@ -6,15 +6,16 @@ import { Directive, OnInit, ElementRef, Renderer2, Input, HostListener } from '@
 export class RoundedDirective implements OnInit {
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+  @HostBinding('style.backgroundColor') backgroundColor: string;
 
   @Input() appRounded: string = '10px';
   ngOnInit () {
     this.renderer.setStyle(this.elementRef.nativeElement, 'border-radius', this.appRounded);
   }
   @HostListener('mouseenter') mouseOver (event: Event) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', '#F8F8F8');
+    this.backgroundColor = "#F8F8F8";
   }
   @HostListener('mouseleave') mouseLeave (event: Event) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'white');
+    this.backgroundColor = "white";
   }
 }
