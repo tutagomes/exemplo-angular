@@ -23,9 +23,9 @@
     </div>
     <button class="btn waves-effect waves-light" (click)="verificaServidor()" name="action">Verificar Servidor
     </button>
-    <ul class="collection">
+    <ul class="collection" [appRounded]='"60px"'>
         <li app-consulta-element class="collection-item" *ngFor="let consulta of historico; let i = index"
-            [consulta]="consulta" [indice]="i" (deleteConsulta)="onDeleteConsulta($event)">
+            [consulta]="consulta" [indice]="i" (deleteConsulta)="onDeleteConsulta($event)" [appRounded]='"60px"'>
             CONTEÚDO PASSADO
             <h4>
               TESTE
