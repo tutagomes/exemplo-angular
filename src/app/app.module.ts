@@ -8,6 +8,7 @@ import { ConsultaElementComponent } from './server/consulta-element/consulta-ele
 import { RoundedDirective } from './diretivas/rounded.directive';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import { TarefasComponent } from './tarefas/tarefas.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
     ServerComponent,
     ConsultaElementComponent,
     RoundedDirective,
-    TruncatePipe
+    TruncatePipe,
+    TarefasComponent
   ],
   imports: [
     BrowserModule,

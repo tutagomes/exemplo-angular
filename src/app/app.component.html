@@ -1,21 +1,16 @@
-  <br>
-  <!-- <div class="row">
-    <div class="col offset-s3 s6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">{{ processador(title) }}</span>
-          <p> 
-            <input id="title" type="text" class="white-text" [(ngModel)]='title'>
-            <label for="title">Title</label>
-        </div>
-        <h3 *ngIf='title.length > 5' > Muito grande !</h3>
-      </div>
+<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center">Logo</a>
+      <ul class="left hide-on-med-and-down">
+        <li routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><a routerLink='/'>Consultas</a></li>
+        <li routerLinkActive="active"><a [routerLink]='"/tarefas"'>Tarefas</a></li>
+      </ul>
     </div>
-  </div> -->
+  </nav>
   <div class="row" style='width: 100%'>
     <div class='col s12'>
-        <p [innerHTML]="title"> </p>
-        <!-- <button [disabled]="title.length < 10"> Alterar Titulo </button> -->
-      <app-server></app-server>
+      <!-- removendo o app-server e adicionando router-outlet <app-server></app-server> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
