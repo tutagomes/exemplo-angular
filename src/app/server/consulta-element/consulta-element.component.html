@@ -7,7 +7,7 @@
                 X
             </button></span>
         <p style='color: grey; font-size: 0.8em'>
-            {{consulta.message}}
+            {{consulta.message | truncate: 5 | uppercase}}
             <ng-content></ng-content>
         </p>
     </span>
