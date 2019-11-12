@@ -5,7 +5,6 @@ import { LoggingService } from 'src/app/logging.service';
   selector: '[app-consulta-element]',
   templateUrl: './consulta-element.component.html',
   styleUrls: ['./consulta-element.component.css'],
-  providers: [LoggingService],
   encapsulation: ViewEncapsulation.Emulated // Native, None
 })
 export class ConsultaElementComponent implements OnInit {
