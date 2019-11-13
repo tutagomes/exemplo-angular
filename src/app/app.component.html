@@ -1,16 +1,16 @@
-<nav>
+﻿<nav *ngIf="currentUser">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Logo</a>
-      <ul class="left hide-on-med-and-down">
+        <ul class="left">
         <li routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}"><a routerLink='/'>Consultas</a></li>
         <li routerLinkActive="active"><a [routerLink]='"/tarefas"'>Tarefas</a></li>
-      </ul>
+        </ul>
+        <a class="right" (click)="logout()">Logout</a>
     </div>
-  </nav>
-  <div class="row" style='width: 100%'>
+    </nav>
+    <div class="row" style='width: 100%'>
     <div class='col s12'>
-      <!-- removendo o app-server e adicionando router-outlet <app-server></app-server> -->
-      <router-outlet></router-outlet>
+        <!-- removendo o app-server e adicionando router-outlet <app-server></app-server> -->
+        <router-outlet></router-outlet>
     </div>
-  </div>
+    </div>
