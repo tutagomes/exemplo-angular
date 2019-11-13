@@ -5,12 +5,16 @@ import { TarefasComponent } from './tarefas/tarefas.component';
 
 const routes: Routes = [
     {
-        path: '',
-        component: ServerComponent
+      path: '',
+      component: ServerComponent
     },
     {
-        path: 'tarefas',
-        component: TarefasComponent
+    	path: 'tarefas',
+    	component: TarefasComponent
+    },
+    {
+    	path: 'tarefas/:id',
+    	component: TarefasComponent
     }
   ];
 @NgModule({
