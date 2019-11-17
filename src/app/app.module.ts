@@ -19,6 +19,11 @@ import { AppComponent } from './app.component';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
+
+import { ButtonsModule } from 'ngx-bootstrap';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ButtonsModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
