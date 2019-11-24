@@ -11,6 +11,7 @@ export class ConsultaElementComponent implements OnInit {
 
   @Input () consulta: Consulta;
   @Input ('indice') index: number;
+  @Input () mostraResposta: boolean;
   @Output() deleteConsulta = new EventEmitter<{index: number}>();
   constructor(private logginService: LoggingService) { }
 

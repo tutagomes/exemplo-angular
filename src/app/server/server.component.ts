@@ -32,12 +32,12 @@ export class ServerComponent implements OnInit {
     this.consultaServer.recolhendo = true
     axios.get(this.server_url).then((response) => {
       this.consultaServer.serverStatus = true
-      this.consultaServer.resposta = response.data
-      this.historico.push(new Consulta(true, response.data))
+      this.consultaServer.resposta = JSON.stringify(response.data)
+      this.historico.push(new Consulta(true, JSON.stringify(response.data)))
     }).catch((error) => {
       this.consultaServer.serverStatus = false
-      this.consultaServer.error = error
-      this.historico.push(new Consulta(false, error))
+      this.consultaServer.error = JSON.stringify(error)
+      this.historico.push(new Consulta(false, JSON.stringify(error.message)))
     }).finally( () => {
       this.consultaServer.recolhendo = false
       this.consultaServer.recolhido = true

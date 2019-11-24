@@ -1,31 +1,34 @@
-<div class='container'>
-    <div class="input-field inline" style='width: 300px'>
-        <input id="url_inline" type="url" [(ngModel)]='server_url' class="validate">
-        <span class="helper-text" data-error="wrong" data-success="right">URL do Servidor</span>
+<div class='' style='padding: 30px; text-align: center'>
+    <div class='row'>
+        <div class="col-md-4 mt-1">
+            <div class="card">
+                <h4 class="card-header" style='text-align: center;'>Consultar Status</h4>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="username">URL</label>
+                        <input id="url_inline" (keyup.enter)="verificaServidor()" type="url" [(ngModel)]='server_url' class="validate form-control" />
+                    </div>
+                    <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="mostrarResposta" [checked]="mostrar_resposta"
+                            (input)='mostrar_resposta = $event.target.checked' >
+                            <label class="form-check-label" for="mostrarResposta">Mostrar resposta</label>
+                          </div>
+                    <div class='form-group'>
+                        <button class="btn btn-primary" (click)="verificaServidor()" name="action">Verificar Servidor
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mt-1" style='max-height: 85vh; overflow-y: auto;'>
+            <div id='recolhendo' *ngIf='consultaServer.recolhendo'>
+                Verificando servidor...
+            </div>
+            <ul>
+                <li class="list-group" app-consulta-element *ngFor="let consulta of historico; let i = index"
+                    [consulta]="consulta" [indice]="i" (deleteConsulta)="onDeleteConsulta($event)" [mostraResposta]="mostrar_resposta">
+                </li>
+            </ul>
+        </div>
     </div>
-    <p>
-        <label>
-            <input type="checkbox" class="filled-in" [checked]="mostrar_resposta"
-                (input)='mostrar_resposta = $event.target.checked' />
-            <span>Mostrar resposta</span>
-        </label>
-    </p>
-    <br>
-    <div id='resultado' *ngIf='consultaServer.recolhido'>
-        <p class='green-text' *ngIf='consultaServer.serverStatus'>Server online!
-            <br>
-            {{ mostrar_resposta ? 'Resposta: ' + consultaServer.resposta : ''}}
-        </p>
-        <p class='red-text' *ngIf='!consultaServer.serverStatus'>{{consultaServer.error}}</p>
-    </div>
-    <div id='recolhendo' *ngIf='consultaServer.recolhendo'>
-        Verificando servidor...
-    </div>
-    <button class="btn waves-effect waves-light" (click)="verificaServidor()" name="action">Verificar Servidor
-    </button>
-    <ul class="collection" appRounded>
-        <li app-consulta-element class="collection-item" *ngFor="let consulta of historico; let i = index"
-            [consulta]="consulta" [indice]="i" (deleteConsulta)="onDeleteConsulta($event)" appRounded>
-        </li>
-    </ul>
 </div>

@@ -1,14 +1,16 @@
-<div style='text-align: left;'>
-
-    <span class="title" [ngClass]="{ sucesso: consulta.online, erro: !consulta.online}">{{index}} -
-        {{ consulta.online ? 'Online': 'Offline'}}
-        <span class="new badge" [ngClass]="{ red: !consulta.online, green: consulta.online}"
-            data-badge-caption="">{{ formataData(consulta.date) }} <button (click)='onDeleteConsulta(index)'>
-                X
-            </button></span>
-        <p style='color: grey; font-size: 0.8em'>
-            {{consulta.message | truncate: 5 | uppercase}}
-            <ng-content></ng-content>
-        </p>
-    </span>
+<div style='padding: 10px; margin-bottom: 0px; position: relative' appRounded >
+        <div style='text-align: left;' class='alert' 
+            [ngClass]="{'alert-danger': !consulta.online, 'alert-success': consulta.online}">
+            {{index}} -
+            {{ consulta.online ? 'Online': 'Offline'}}
+            <span class="badge badge-secondary" style='margin-left: 10px; margin-top: -10px;'>{{ formataData(consulta.date) }} 
+              </span>
+            <p style='color: grey; font-size: 0.8em' *ngIf="mostraResposta">
+                {{consulta.message}}
+                <ng-content></ng-content>
+            </p>
+        </div>
+        <button (click)='onDeleteConsulta(index)' class='btn btn-outline' style='position: absolute; top: 10px; right: 10px'>
+                x
+            </button>
 </div>
