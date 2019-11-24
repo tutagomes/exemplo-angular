@@ -1,6 +1,49 @@
-<p>tarefas works!</p>
-<button type="button" class="btn btn-primary" (click)='carregaTarefas()'>
-        Carregar Tarefas
-</button>
-<br>
-{{ tarefaId ? 'Carregando tarefa de ID:' + tarefaId : ''}}
+<div class='' style='padding: 30px; text-align: center'>
+    <div class='row'>
+        <div class="col-md-4 mt-1">
+            <div class="card">
+                <div class="card">
+                    <h4 class="card-header" style='text-align: center;'>{{ editingTarefa ? 'Editar' : 'Nova Tarefa'}}
+                    </h4>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="tarefa_titulo">Título</label>
+                            <input id="tarefa_titulo" type="text" [(ngModel)]='tarefa.titulo'
+                                class="validate form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="usuarioSelect">Usuário</label>
+                            <select class="form-control" id="usuarioSelect" [(ngModel)]='tarefa.userId'>
+                                <option *ngFor="let usuario of tarefasService.usuarios" [value]='usuario.id'>
+                                    {{usuario.first_name}} {{usuario.last_name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="tarefa_feita" [checked]="tarefa.done"
+                                (input)='tarefa.done = $event.target.checked'>
+                            <label class="form-check-label" for="tarefa_feita">Feita</label>
+                        </div>
+                        <div class='form-group'>
+                            <button *ngIf="!editingTarefa" class="btn btn-success" (click)="addTarefa()"
+                                [disabled]="tarefa.titulo.length < 1 || !tarefa.userId" name="action">Adicionar Tarefa
+                            </button>
+                            <button *ngIf="editingTarefa" class="btn btn-light" (click)="cancelaEdicao()"
+                                name="action">Cancelar
+                            </button>
+                            <button *ngIf="editingTarefa" style='margin-left: 5px' class="btn btn-primary"
+                                (click)="salvaEdicao()" name="action">Salvar Tarefa
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mt-1 row" style='max-height: 85vh; overflow-y: auto;'>
+            <app-tarefa-card class="col-md-4" *ngFor="let tarefa of tarefasService.tarefas; let i = index"
+                [tarefa]="tarefa" [indice]="i" (deleteTarefa)="deleteTarefa($event)" (editTarefa)="editTarefa($event)"
+                (toggleTarefa)="toggleTarefa($event)">
+            </app-tarefa-card>
+        </div>
+    </div>
+</div>

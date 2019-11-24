@@ -25,7 +25,7 @@
                 Verificando servidor...
             </div>
             <ul>
-                <li class="list-group" app-consulta-element *ngFor="let consulta of historico; let i = index"
+                <li class="list-group" app-consulta-element *ngFor="let consulta of consultaService.historico; let i = index"
                     [consulta]="consulta" [indice]="i" (deleteConsulta)="onDeleteConsulta($event)" [mostraResposta]="mostrar_resposta">
                 </li>
             </ul>

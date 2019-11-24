@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Consulta } from './consulta'
 import { LoggingService } from '../logging.service';
-
+import { ConsultaService } from '../services/consulta.service'
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
@@ -23,12 +23,15 @@ export class ServerComponent implements OnInit {
     error: '',
     resposta: ''
   }
-  constructor(private logginService: LoggingService) { }
+  constructor(private logginService: LoggingService, private consultaService: ConsultaService) { }
   onDeleteConsulta (event) {
     this.logginService.addToLog('Deletado historico de consulta!', false);
-    this.historico.splice(event.index, 1)
+    // this.historico.splice(event.index, 1)
+    this.consultaService.removeHistorico(event.index)
   }
   verificaServidor () {
+    this.consultaService.getConsulta(this.server_url)
+    /*
     this.consultaServer.recolhendo = true
     axios.get(this.server_url).then((response) => {
       this.consultaServer.serverStatus = true
@@ -41,7 +44,7 @@ export class ServerComponent implements OnInit {
     }).finally( () => {
       this.consultaServer.recolhendo = false
       this.consultaServer.recolhido = true
-    })
+    })*/
   }
   ngOnInit() {
   }

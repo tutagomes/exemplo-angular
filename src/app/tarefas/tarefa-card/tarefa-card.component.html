@@ -1,0 +1,31 @@
+<div style='padding: 2px; margin-bottom: 0px; position: relative; ' appRounded>
+    <div style='text-align: left; min-height: 180px; padding-top: 0px' class='alert'
+        [ngClass]="{'alert-info': !tarefa.done, 'alert-success': tarefa.done}">
+        <div class='row'>
+            <div class='col-10' style='padding-top: 20px'>
+                <h5>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" [checked]="tarefa.done" (change)="marcarFeita()"
+                            [id]="'tarefa' + tarefa.id">
+                        <label class="form-check-label" [id]="'tarefa' + tarefa.id"
+                            [ngClass]="{overline: tarefa.done}">{{tarefa.titulo}}</label>
+                    </div>
+                </h5>
+            </div>
+            <div class='col-2' style='text-align: cent; padding: 0px'>
+                <button (click)='onEditTarefa()' class='btn btn-outline' style=' color: #f1c40f'>
+                    <i class="far fa-edit"></i>
+                </button>
+                <button (click)='onDeleteTarefa()' class='btn btn-outline' style='color: #e74c3c'>
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+        <p style='color: grey; font-size: 0.8em'>
+            <ng-content></ng-content>
+            Tarefa de: {{tarefa.user.first_name + ' ' + tarefa.user.last_name}}<br>
+            Criada em: {{tarefa.createdAt}}
+        </p>
+    </div>
+
+</div>

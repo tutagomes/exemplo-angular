@@ -20,7 +20,8 @@ import { AppComponent } from './app.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 
-import { ButtonsModule } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap';;
+import { TarefaCardComponent } from './tarefas/tarefa-card/tarefa-card.component'
 
 
 
@@ -33,7 +34,8 @@ import { ButtonsModule } from 'ngx-bootstrap';
     TruncatePipe,
     TarefasComponent,
     LoginComponent
-  ],
+,
+    TarefaCardComponent  ],
   imports: [
     BrowserModule,
     FormsModule,

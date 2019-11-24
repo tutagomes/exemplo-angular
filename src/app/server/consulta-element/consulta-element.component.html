@@ -1,7 +1,7 @@
 <div style='padding: 10px; margin-bottom: 0px; position: relative' appRounded >
         <div style='text-align: left;' class='alert' 
             [ngClass]="{'alert-danger': !consulta.online, 'alert-success': consulta.online}">
-            {{index}} -
+            {{ consulta.id }} -
             {{ consulta.online ? 'Online': 'Offline'}}
             <span class="badge badge-secondary" style='margin-left: 10px; margin-top: -10px;'>{{ formataData(consulta.date) }} 
               </span>
