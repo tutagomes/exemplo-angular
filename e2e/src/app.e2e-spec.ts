@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('Should display login if not authenticated', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('meu-app-dos-sonhos app is running!');
+    expect(browser.getCurrentUrl()).toContain('login');
   });
 
   afterEach(async () => {
