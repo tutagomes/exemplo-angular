@@ -9,7 +9,7 @@ import { LoggingService } from 'src/app/logging.service';
 })
 export class ConsultaElementComponent implements OnInit {
 
-  @Input () consulta: Consulta;
+  @Input () consulta: Consulta = new Consulta();
   @Input ('indice') index: number;
   @Input () mostraResposta: boolean;
   @Output() deleteConsulta = new EventEmitter<{index: number}>();

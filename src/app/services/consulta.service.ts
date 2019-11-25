@@ -63,6 +63,7 @@ export class ConsultaService {
         this.historico.push(new Consulta(<number>this.idGenerator.next().value, true, JSON.stringify(resposta)))
       },
       erro => {
+        this.historico.push(new Consulta(<number>this.idGenerator.next().value, false, JSON.stringify(erro.message)))
         console.error(erro)
       },
       () => {

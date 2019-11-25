@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TarefasComponent } from './tarefas.component';
+import { TarefasService } from '../services/tarefas.service';
+import { TarefaCardComponent } from './tarefa-card/tarefa-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 describe('TarefasComponent', () => {
   let component: TarefasComponent;
@@ -8,7 +14,19 @@ describe('TarefasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TarefasComponent ]
+      declarations: [ TarefasComponent, TarefaCardComponent ],
+      providers: [TarefasService],
+      imports: [
+        FormsModule,
+        CommonModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule.forRoot(
+          [
+            { path: "", component: TarefasComponent}
+          ]
+        )
+      ]
     })
     .compileComponents();
   }));
