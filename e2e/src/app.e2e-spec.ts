@@ -7,7 +7,7 @@ describe('workspace-project App', () => {
   beforeEach(() => {
     page = new AppPage();
   });
-
+  
   it('Should display login if not authenticated', () => {
     page.navigateTo();
     expect(browser.getCurrentUrl()).toContain('login');
@@ -57,7 +57,6 @@ describe('workspace-project App', () => {
     expect(browser.getCurrentUrl()).toContain('login');
     expect(element(by.css('#tarefa_titulo')).isPresent()).toBe(false);
   });
-
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     /* const logs = await browser.manage().logs().get(logging.Type.BROWSER);
